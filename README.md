@@ -137,7 +137,7 @@ Input Features:
 ----
 
 ## 10. Project Structure
-Health-Care-Project/
+Bank_Customer_Churn/
 
 │
 
