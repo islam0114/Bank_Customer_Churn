@@ -18,7 +18,10 @@ if os.path.exists(model_path):
     print("✅ Model downloaded successfully.")
     with open(model_path, "rb") as f:
         model = pickle.load(f)
-
+else:
+    st.error("Model file not found.")
+    st.stop()
+    
 scaler = pickle.load(open('Deployment/scaler.sav', 'rb'))
 
 st.set_page_config(page_title="Bank Customer Churn", page_icon="🏦", layout="wide")
