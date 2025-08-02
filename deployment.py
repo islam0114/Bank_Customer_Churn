@@ -5,7 +5,7 @@ import pickle
 import os
 import requests
 
-ef download_model_from_drive(file_id, destination):
+def download_model_from_drive(file_id, destination):
     URL = "https://drive.google.com/uc?export=download"
     session = requests.Session()
 
