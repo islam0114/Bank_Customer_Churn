@@ -2,3 +2,5 @@ pandas
 xgboost
 streamlit
 pickle
+requests
+os
