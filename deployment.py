@@ -14,7 +14,10 @@ if not os.path.exists(model_path):
         with open(model_path, 'wb') as f:
             for chunk in r.iter_content(chunk_size=8192):
                 f.write(chunk)
-
+                
+with open(model_path, 'rb') as f:
+    model = pickle.load(f)
+    
 scaler = pickle.load(open('Deployment/scaler.sav', 'rb'))
 
 st.set_page_config(page_title="Bank Customer Churn", page_icon="🏦", layout="wide")
