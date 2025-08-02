@@ -3,39 +3,21 @@ import streamlit as st
 import pandas as pd
 import pickle
 import os
-import requests
+import gdown
 
-def download_model_from_drive(file_id, destination):
-    URL = "https://drive.google.com/uc?export=download"
-    session = requests.Session()
-
-    response = session.get(URL, params={'id': file_id}, stream=True)
-    token = None
-    for key, value in response.cookies.items():
-        if key.startswith('download_warning'):
-            token = value
-            break
-
-    if token:
-        params = {'id': file_id, 'confirm': token}
-        response = session.get(URL, params=params, stream=True)
-
-    with open(destination, "wb") as f:
-        for chunk in response.iter_content(32768):
-            if chunk:
-                f.write(chunk)
-
-# === Step 2: Setup ===
-
-model_file_name = "rf_model.pkl"
+# ID بتاع الملف من Google Drive
 file_id = "1c6gCX7dhERvj0NZWswT4Ks4ZNYjnnamW"
+url = f"https://drive.google.com/uc?id={file_id}"
 
-if not os.path.exists(model_file_name):
-    download_model_from_drive(file_id, model_file_name)
+# اسم الملف اللي هيتخزن فيه محليًا
+model_path = "rf_model.pkl"
 
-# === Step 3: Load the model ===
+# نزّل الملف لو مش موجود
+if not os.path.exists(model_path):
+    gdown.download(url, model_path, quiet=False)
 
-with open(model_file_name, 'rb') as f:
+# افتح الموديل
+with open(model_path, "rb") as f:
     model = pickle.load(f)
 
 scaler = pickle.load(open('Deployment/scaler.sav', 'rb'))
