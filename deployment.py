@@ -3,8 +3,8 @@ import streamlit as st
 import pandas as pd
 import pickle
 
-Data = pickle.load(open('rf_model.sav', 'rb'))
-scaler = pickle.load(open('scaler.sav', 'rb'))
+Data = pickle.load(open('https://drive.google.com/file/d/1c6gCX7dhERvj0NZWswT4Ks4ZNYjnnamW/view?usp=drive_link', 'rb'))
+scaler = pickle.load(open('Deployment/scaler.sav', 'rb'))
 
 st.set_page_config(page_title="Bank Customer Churn", page_icon="🏦", layout="wide")
 st.title("Bank Customer Churn App")
