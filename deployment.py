@@ -10,7 +10,7 @@ file_id = "1c6gCX7dhERvj0NZWswT4Ks4ZNYjnnamW"
 url = f"https://drive.google.com/uc?id={file_id}"
 
 # اسم الملف اللي هيتخزن فيه محليًا
-model_path = "rf_model.pkl"
+model_path = "rf_model.sav"
 
 # نزّل الملف لو مش موجود
 if not os.path.exists(model_path):
