@@ -7,7 +7,7 @@ import gdown
 # ID الخاص بالملف
 file_id = "1c6gCX7dhERvj0NZWswT4Ks4ZNYjnnamW"  # غيّره للملف بتاعك
 url = f"https://drive.google.com/uc?id={file_id}"
-model_path = "Deployment/rf_model.sav"
+model_path = "rf_model.sav"
 
 # تحميل الموديل لو مش موجود
 if not os.path.exists(model_path):
@@ -15,7 +15,6 @@ if not os.path.exists(model_path):
 
 # تأكيد التحميل
 if not os.path.exists(model_path):
-    os.makedirs("Deployment", exist_ok=True)  # تأكد من وجود مجلد Deployment
     result = gdown.download(url, model_path, quiet=False)
     if result is None or not os.path.exists(model_path):
         st.error("❌ Failed to download model file. Check the file link or permissions.")
