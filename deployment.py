@@ -11,7 +11,7 @@ model_path = "rf_model.sav"
 
 # تحميل الموديل لو مش موجود
 if not os.path.exists(model_path):
-    gdown.download(url, model_path, quiet=False)
+    gdown.download(url, model_path, quiet=False, use_cookies=False)
 
 # تأكيد التحميل
 if not os.path.exists(model_path):
