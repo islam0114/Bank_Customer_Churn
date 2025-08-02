@@ -7,7 +7,7 @@ import gdown
 # ID الخاص بالملف
 file_id = "1c6gCX7dhERvj0NZWswT4Ks4ZNYjnnamW"  # غيّره للملف بتاعك
 url = f"https://drive.google.com/uc?id={file_id}"
-model_path = "rf_model.sav"
+model_path = "Deployment/rf_model.sav"
 
 # تحميل الموديل لو مش موجود
 if not os.path.exists(model_path):
