@@ -3,24 +3,18 @@ import streamlit as st
 import pandas as pd
 import pickle
 import os
-import gdown
-# ID الخاص بالملف
-file_id = "1c6gCX7dhERvj0NZWswT4Ks4ZNYjnnamW"  # غيّره للملف بتاعك
-url = f"https://drive.google.com/uc?id={file_id}"
+import requests
+
+url = "https://github.com/islam0114/Bank_Customer_Churn/releases/tag/v1.0.0/rf_model.sav"
 model_path = "rf_model.sav"
 
-# تحميل الموديل لو مش موجود
 if not os.path.exists(model_path):
-    gdown.download(url, model_path, quiet=False, use_cookies=False)
+    with requests.get(url, stream=True) as r:
+        r.raise_for_status()
+        with open(model_path, 'wb') as f:
+            for chunk in r.iter_content(chunk_size=8192):
+                f.write(chunk)
 
-# تأكيد التحميل
-if not os.path.exists(model_path):
-    result = gdown.download(url, model_path, quiet=False)
-    if result is None or not os.path.exists(model_path):
-        st.error("❌ Failed to download model file. Check the file link or permissions.")
-        st.stop()
-
-    
 scaler = pickle.load(open('Deployment/scaler.sav', 'rb'))
 
 st.set_page_config(page_title="Bank Customer Churn", page_icon="🏦", layout="wide")
