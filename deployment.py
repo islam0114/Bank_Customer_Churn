@@ -4,21 +4,23 @@ import pandas as pd
 import pickle
 import os
 import gdown
-
-# ID بتاع الملف من Google Drive
-file_id = "1c6gCX7dhERvj0NZWswT4Ks4ZNYjnnamW"
+# ID الخاص بالملف
+file_id = "1c6gCX7dhERvj0NZWswT4Ks4ZNYjnnamW"  # غيّره للملف بتاعك
 url = f"https://drive.google.com/uc?id={file_id}"
-
-# اسم الملف اللي هيتخزن فيه محليًا
 model_path = "rf_model.sav"
 
-# نزّل الملف لو مش موجود
+# تحميل الموديل لو مش موجود
 if not os.path.exists(model_path):
     gdown.download(url, model_path, quiet=False)
 
-# افتح الموديل
-with open(model_path, "rb") as f:
-    model = pickle.load(f)
+# تأكيد التحميل
+if os.path.exists(model_path):
+    print("✅ Model downloaded successfully.")
+    with open(model_path, "rb") as f:
+        model = pickle.load(f)
+else:
+    st.error("❌ Model download failed.")
+    st.stop()
 
 scaler = pickle.load(open('Deployment/scaler.sav', 'rb'))
 
