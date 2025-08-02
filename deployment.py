@@ -5,7 +5,7 @@ import pickle
 import os
 import requests
 
-url = "https://github.com/islam0114/Bank_Customer_Churn/releases/tag/v1.0.0/rf_model.sav"
+url = "https://github.com/islam0114/Bank_Customer_Churn/releases/download/v1.0.0/rf_model.sav"
 model_path = "rf_model.sav"
 
 if not os.path.exists(model_path):
