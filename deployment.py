@@ -2,8 +2,42 @@ import numpy as np
 import streamlit as st
 import pandas as pd
 import pickle
+import os
+import requests
 
-Data = pickle.load(open('https://drive.google.com/file/d/1c6gCX7dhERvj0NZWswT4Ks4ZNYjnnamW/view?usp=drive_link', 'rb'))
+ef download_model_from_drive(file_id, destination):
+    URL = "https://drive.google.com/uc?export=download"
+    session = requests.Session()
+
+    response = session.get(URL, params={'id': file_id}, stream=True)
+    token = None
+    for key, value in response.cookies.items():
+        if key.startswith('download_warning'):
+            token = value
+            break
+
+    if token:
+        params = {'id': file_id, 'confirm': token}
+        response = session.get(URL, params=params, stream=True)
+
+    with open(destination, "wb") as f:
+        for chunk in response.iter_content(32768):
+            if chunk:
+                f.write(chunk)
+
+# === Step 2: Setup ===
+
+model_file_name = "rf_model.pkl"
+file_id = "1c6gCX7dhERvj0NZWswT4Ks4ZNYjnnamW"
+
+if not os.path.exists(model_file_name):
+    download_model_from_drive(file_id, model_file_name)
+
+# === Step 3: Load the model ===
+
+with open(model_file_name, 'rb') as f:
+    Data = pickle.load(f)
+
 scaler = pickle.load(open('Deployment/scaler.sav', 'rb'))
 
 st.set_page_config(page_title="Bank Customer Churn", page_icon="🏦", layout="wide")
