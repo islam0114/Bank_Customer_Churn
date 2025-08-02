@@ -14,13 +14,13 @@ if not os.path.exists(model_path):
     gdown.download(url, model_path, quiet=False)
 
 # تأكيد التحميل
-if os.path.exists(model_path):
-    print("✅ Model downloaded successfully.")
-    with open(model_path, "rb") as f:
-        model = pickle.load(f)
-else:
-    st.error("Model file not found.")
-    st.stop()
+if not os.path.exists(model_path):
+    os.makedirs("Deployment", exist_ok=True)  # تأكد من وجود مجلد Deployment
+    result = gdown.download(url, model_path, quiet=False)
+    if result is None or not os.path.exists(model_path):
+        st.error("❌ Failed to download model file. Check the file link or permissions.")
+        st.stop()
+
     
 scaler = pickle.load(open('Deployment/scaler.sav', 'rb'))
 
