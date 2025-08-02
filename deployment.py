@@ -36,7 +36,7 @@ if not os.path.exists(model_file_name):
 # === Step 3: Load the model ===
 
 with open(model_file_name, 'rb') as f:
-    Data = pickle.load(f)
+    model = pickle.load(f)
 
 scaler = pickle.load(open('Deployment/scaler.sav', 'rb'))
 
@@ -115,7 +115,7 @@ df = pd.DataFrame({
 
 con = st.button("🔍 predict Churn")
 if con:
-    result = Data.predict(df)
+    result = model.predict(df)
     if result == 1:
         st.write("The customer is likely to churn. ⚠️")
     else:
