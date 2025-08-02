@@ -14,7 +14,7 @@ Banks face increasing challenges in retaining customers, with churn posing a sig
 
 ----
 
-## 3. Dataset Description
+## 2. Dataset Description
 Source: Kaggle
 
 The dataset includes a wide variety of features categorized into:
@@ -33,7 +33,7 @@ The dataset includes a wide variety of features categorized into:
 
 ----
 
-## 4. Data Preprocessing
+## 3. Data Preprocessing
 
 - Missing Values: 0
 - Categorical Encoding: Applied Label Encoding and one-hot encoding
@@ -42,7 +42,7 @@ The dataset includes a wide variety of features categorized into:
 
 ----
 
-## 5. Model Development
+## 4. Model Development
 Multiple machine learning models were tested. Random Forest Model was selected as the final model due to its:
 
 - High accuracy
@@ -57,7 +57,7 @@ The final Random Forest model was saved and prepared for deployment.
 
 ----
 
-## 6. Model Deployment
+## 5. Model Deployment
 Input Features:
 
 - Age (18 ==> 60)
@@ -82,7 +82,7 @@ Input Features:
 
 ----
 
-## 7. Challenges Faced
+## 6. Challenges Faced
 - Imbalanced Target: Required metrics like F1-score and ROC-AUC
 
 - Feature Selection for Plots: Needed to avoid noisy or uninformative visuals
@@ -97,7 +97,7 @@ Input Features:
 
 -----
 
-## 8. Key Insights
+## 7. Key Insights
 - Critical Risk Factors Identified: e.g., age, PHQ-9 score, mental health history
 
 - Explainable Models: Feature importance helped interpret predictions
@@ -112,7 +112,7 @@ Input Features:
 
 ----
 
-## 9. Integration Recommendations
+## 8. Integration Recommendations
 - Real-Time Scoring Pipeline: Integrate the model into the bank's CRM or transaction system to score customers in real-time or at regular intervals, identifying high-risk individuals promptly.
 
 - Automated Alerts & Dashboards: Develop dashboards and automated alerts for the customer retention team, enabling proactive outreach when a customer is flagged as high-risk.
@@ -125,7 +125,7 @@ Input Features:
 
 ----
 
-## 10. Tools & Technologies
+## 9. Tools & Technologies
 
 | Category         | Tools                         |
 | ---------------- | ----------------------------- |
@@ -136,7 +136,7 @@ Input Features:
 
 ----
 
-## 11. Project Structure
+## 10. Project Structure
 Health-Care-Project/
 
 │
