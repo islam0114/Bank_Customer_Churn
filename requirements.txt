@@ -2,6 +2,3 @@ gdown==4.7.1
 pandas
 xgboost
 streamlit
-pickle
-os
-
